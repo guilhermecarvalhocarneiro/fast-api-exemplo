@@ -1,12 +1,11 @@
 import datetime
-from typing import Optional, Set
+from typing import Optional
 from uuid import UUID
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
+
 
 # Especie
-
-
 class EspecieBase(BaseModel):
     enabled: bool = True
     nome: str
@@ -41,7 +40,6 @@ class EspecieInDB(EspecieInDBBase):
 
 
 # Animal
-
 class AnimalBase(BaseModel):
     enabled: bool = True
     fk_cliente_id: Optional[int]

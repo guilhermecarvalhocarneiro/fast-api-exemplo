@@ -1,8 +1,6 @@
-from core.cruds import CRUDBase
-
 from animal.models import Animal, Especie
-from animal.schemas import (AnimalCreate, AnimalUpdate, EspecieCreate,
-                            EspecieUpdate)
+from animal.schemas import AnimalCreate, AnimalUpdate, EspecieCreate, EspecieUpdate
+from core.cruds import CRUDBase
 
 
 class CRUDEspecie(CRUDBase[Especie, EspecieCreate, EspecieUpdate]):

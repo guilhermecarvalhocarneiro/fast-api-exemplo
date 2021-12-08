@@ -1,12 +1,10 @@
 import datetime
-from typing import Optional, Set
 from uuid import UUID
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
+
 
 # ConfiguracaoPix
-
-
 class ConfiguracaoPixBase(BaseModel):
     enabled: bool = True
     chave: str
@@ -44,7 +42,6 @@ class ConfiguracaoPixInDB(ConfiguracaoPixInDBBase):
 
 
 # PagamentoPix
-
 class PagamentoPixBase(BaseModel):
     enabled: bool = True
     status: str

@@ -16,5 +16,4 @@ if settings.backend_cors_origins:
         allow_methods=["*"],
         allow_headers=["*"],
     )
-
 app.include_router(api_router)

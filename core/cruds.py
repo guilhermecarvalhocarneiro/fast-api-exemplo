@@ -11,13 +11,13 @@ ModelType = TypeVar("ModelType", bound=Base)
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
 UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
 
-
 '''
 Arquivos com com crud padrão para um models
 
 - Herdando essa classe, já e possível ter o crud funcionando normalmente
 - O desenvolvedor pode customizar ou criar novos métodos herdando dessa classe
 '''
+
 
 class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     def __init__(self, model: Type[ModelType]):
@@ -33,16 +33,14 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
 
     def get(self, db: Session, id: Any) -> Optional[ModelType]:
         query = db.query(self.model).filter(self.model.id == id)
-        if(hasattr(self.model, 'deleted')):
-            query = query.filter(self.model.deleted == False)
+        if hasattr(self.model, 'deleted'):
+            query = query.filter(self.model.deleted is False)
         return query.first()
 
-    def get_multi(
-        self, db: Session, *, skip: int = 0, limit: int = 25
-    ) -> List[ModelType]:
+    def get_multi(self, db: Session, *, skip: int = 0, limit: int = 25) -> List[ModelType]:
         query = db.query(self.model)
-        if(hasattr(self.model, 'deleted')):
-            query = query.filter(self.model.deleted == False)
+        if hasattr(self.model, 'deleted'):
+            query = query.filter(self.model.deleted is False)
         return query.offset(skip).limit(limit).all()
 
     def create(self, db: Session, *, obj_in: CreateSchemaType) -> ModelType:
@@ -53,13 +51,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         db.refresh(db_obj)
         return db_obj
 
-    def update(
-        self,
-        db: Session,
-        *,
-        db_obj: ModelType,
-        obj_in: Union[UpdateSchemaType, Dict[str, Any]]
-    ) -> ModelType:
+    def update(self, db: Session, *, db_obj: ModelType, obj_in: Union[UpdateSchemaType, Dict[str, Any]]) -> ModelType:
         obj_data = jsonable_encoder(db_obj)
         if isinstance(obj_in, dict):
             update_data = obj_in

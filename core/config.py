@@ -1,4 +1,3 @@
-import secrets
 from typing import List
 
 from pydantic import AnyHttpUrl, BaseSettings
@@ -9,6 +8,7 @@ Arquivos principal de configuração da app
 - Nesse aquivo podem ser incluidas novos atributos que serão lidos pelo arquivo .env
 - APP_NAME no .env se traduz para app_name dentro da aplicação
 '''
+
 
 class Settings(BaseSettings):
     app_name: str
@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     db_database: str
     db_username: str
     db_password: str
-    
+
     class Config:
         env_file = ".env"
 

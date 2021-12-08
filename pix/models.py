@@ -1,7 +1,6 @@
+from sqlalchemy import Boolean, Column, String
+
 from core.database import Base
-from sqlalchemy import (Boolean, Column, Date, DateTime, Float, ForeignKey,
-                        Integer, String, Table)
-from sqlalchemy.orm import relationship
 
 
 class ConfiguracaoPix(Base):

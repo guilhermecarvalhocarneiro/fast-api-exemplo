@@ -1,12 +1,11 @@
 import datetime
-from typing import Optional, Set
+from typing import Optional
 from uuid import UUID
 
 from pydantic import BaseModel, EmailStr
 
+
 # Usuario
-
-
 class UsuarioBase(BaseModel):
     enabled: bool = True
     django_user_id: Optional[int]
@@ -52,7 +51,6 @@ class UsuarioInDB(UsuarioInDBBase):
 
 
 # Cliente
-
 class ClienteBase(BaseModel):
     enabled: bool = True
     django_user_id: Optional[int]
@@ -101,7 +99,6 @@ class ClienteInDB(ClienteInDBBase):
 
 
 # Profissao
-
 class ProfissaoBase(BaseModel):
     enabled: bool = True
     nome: str
@@ -136,7 +133,6 @@ class ProfissaoInDB(ProfissaoInDBBase):
 
 
 # Profissional
-
 class ProfissionalBase(BaseModel):
     enabled: bool = True
     django_user_id: Optional[int]
@@ -195,7 +191,6 @@ class ProfissionalInDB(ProfissionalInDBBase):
 
 
 # ProfissionalServico
-
 class ProfissionalServicoBase(BaseModel):
     enabled: bool = True
     profissional_id: int

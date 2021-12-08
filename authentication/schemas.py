@@ -1,24 +1,23 @@
 from typing import Optional, Set
 
-from sqlalchemy.sql.sqltypes import DateTime
-
 from pydantic import BaseModel, EmailStr
 
-'''
+"""
 Arquivo com os schemas da app
 
 - Nesse arquivo e possível configurar o schemas de entrada e saída de dados da api
-'''
+"""
+
 
 # Shared properties
 class UserBase(BaseModel):
-  email: Optional[EmailStr] = None
-  is_active: Optional[bool] = True
-  is_superuser: bool = False
-  is_staff: bool = False
-  first_name: Optional[str] = None
-  last_name: Optional[str] = None
-  username: str
+    email: Optional[EmailStr] = None
+    is_active: Optional[bool] = True
+    is_superuser: bool = False
+    is_staff: bool = False
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    username: str
 
 
 # Properties to receive via API on creation
@@ -50,7 +49,6 @@ class UserInDB(UserInDBBase):
     password: str
 
 
-
 class UserToken(User):
     access_token: str
     token_type: str
@@ -60,16 +58,18 @@ class TokenPayload(BaseModel):
     sub: Optional[int] = None
 
 
-
 # Permisions
 class PermissionBase(BaseModel):
-  name: str
+    name: str
+
 
 class PermissionCreate(PermissionBase):
     pass
 
+
 class PermissionUpdate(PermissionBase):
     pass
+
 
 class PermissionInDBBase(PermissionBase):
     id: int
@@ -90,13 +90,16 @@ class PermissionInDB(PermissionInDBBase):
 
 # Groups
 class GroupBase(BaseModel):
-  name: str
+    name: str
+
 
 class GroupCreate(GroupBase):
     permissions: Set[int] = []
 
+
 class GroupUpdate(GroupBase):
     permissions: Set[int] = []
+
 
 class GroupInDBBase(GroupBase):
     id: int
@@ -113,4 +116,3 @@ class Group(GroupInDBBase):
 # Additional properties stored in DB
 class GroupInDB(GroupInDBBase):
     pass
-

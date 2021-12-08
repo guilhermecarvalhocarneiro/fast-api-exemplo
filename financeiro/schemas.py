@@ -1,12 +1,11 @@
 import datetime
-from typing import Optional, Set
+from typing import Optional
 from uuid import UUID
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
+
 
 # ContasReceber
-
-
 class ContasReceberBase(BaseModel):
     enabled: bool = True
     fk_atendimento_id: int

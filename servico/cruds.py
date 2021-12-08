@@ -1,7 +1,6 @@
 from core.cruds import CRUDBase
 from servico.models import Categoria, Servico, TipoServico
-from servico.schemas import (CategoriaCreate, CategoriaUpdate, ServicoCreate,
-                             ServicoUpdate, TipoServicoCreate,
+from servico.schemas import (CategoriaCreate, CategoriaUpdate, ServicoCreate, ServicoUpdate, TipoServicoCreate,
                              TipoServicoUpdate)
 
 
@@ -12,8 +11,7 @@ class CRUDCategoria(CRUDBase[Categoria, CategoriaCreate, CategoriaUpdate]):
 categoria = CRUDCategoria(Categoria)
 
 
-class CRUDTipoServico(
-        CRUDBase[TipoServico, TipoServicoCreate, TipoServicoUpdate]):
+class CRUDTipoServico(CRUDBase[TipoServico, TipoServicoCreate, TipoServicoUpdate]):
     pass
 
 

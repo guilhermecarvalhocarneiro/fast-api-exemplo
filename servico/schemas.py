@@ -1,12 +1,11 @@
 import datetime
-from typing import Optional, Set
+from typing import Optional
 from uuid import UUID
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
+
 
 # Categoria
-
-
 class CategoriaBase(BaseModel):
     enabled: bool = True
     nome: str
@@ -42,7 +41,6 @@ class CategoriaInDB(CategoriaInDBBase):
 
 
 # TipoServico
-
 class TipoServicoBase(BaseModel):
     enabled: bool = True
     nome: str
@@ -78,7 +76,6 @@ class TipoServicoInDB(TipoServicoInDBBase):
 
 
 # Servico
-
 class ServicoBase(BaseModel):
     enabled: bool = True
     nome: str

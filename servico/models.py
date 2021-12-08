@@ -1,7 +1,7 @@
-from core.database import Base
-from sqlalchemy import (Boolean, Column, Date, DateTime, Float, ForeignKey,
-                        Integer, String, Table)
+from sqlalchemy import Boolean, Column, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+
+from core.database import Base
 
 
 class Categoria(Base):
@@ -17,8 +17,8 @@ class TipoServico(Base):
 
     enabled = Column(Boolean, nullable=False, default=True)
     nome = Column(String(250), nullable=False)
-    categoria_id = Column(ForeignKey('servico_categoria.id'), nullable=True)
-    categoria = relationship('Categoria')
+    categoria_id = Column(ForeignKey("servico_categoria.id"), nullable=True)
+    categoria = relationship("Categoria")
 
 
 class Servico(Base):
@@ -29,5 +29,5 @@ class Servico(Base):
     tempo = Column(Integer, nullable=False)
     valor = Column(Float, nullable=False)
     descricao = Column(String, nullable=True)
-    tipo_servico_id = Column(ForeignKey('servico_tiposervico.id'), nullable=True)
-    tipo_servico = relationship('TipoServico')
+    tipo_servico_id = Column(ForeignKey("servico_tiposervico.id"), nullable=True)
+    tipo_servico = relationship("TipoServico")

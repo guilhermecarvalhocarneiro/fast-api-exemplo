@@ -1,11 +1,8 @@
 from core.cruds import CRUDBase
-from usuario.models import (Cliente, Profissao, Profissional,
-                            ProfissionalServico, Usuario)
-from usuario.schemas import (ClienteCreate, ClienteUpdate, ProfissaoCreate,
-                             ProfissaoUpdate, ProfissionalCreate,
-                             ProfissionalServicoCreate,
-                             ProfissionalServicoUpdate, ProfissionalUpdate,
-                             UsuarioCreate, UsuarioUpdate)
+from usuario.models import (Cliente, Profissao, Profissional, ProfissionalServico, Usuario)
+from usuario.schemas import (ClienteCreate, ClienteUpdate, ProfissaoCreate, ProfissaoUpdate, ProfissionalCreate,
+                             ProfissionalServicoCreate, ProfissionalServicoUpdate, ProfissionalUpdate, UsuarioCreate,
+                             UsuarioUpdate)
 
 
 class CRUDUsuario(CRUDBase[Usuario, UsuarioCreate, UsuarioUpdate]):
@@ -29,16 +26,14 @@ class CRUDProfissao(CRUDBase[Profissao, ProfissaoCreate, ProfissaoUpdate]):
 profissao = CRUDProfissao(Profissao)
 
 
-class CRUDProfissional(
-        CRUDBase[Profissional, ProfissionalCreate, ProfissionalUpdate]):
+class CRUDProfissional(CRUDBase[Profissional, ProfissionalCreate, ProfissionalUpdate]):
     pass
 
 
 profissional = CRUDProfissional(Profissional)
 
 
-class CRUDProfissionalServico(
-        CRUDBase[ProfissionalServico, ProfissionalServicoCreate, ProfissionalServicoUpdate]):
+class CRUDProfissionalServico(CRUDBase[ProfissionalServico, ProfissionalServicoCreate, ProfissionalServicoUpdate]):
     pass
 
 

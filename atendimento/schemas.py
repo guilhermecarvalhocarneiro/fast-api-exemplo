@@ -1,12 +1,11 @@
 import datetime
-from typing import Optional, Set
+from typing import Optional
 from uuid import UUID
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
+
 
 # Agendamento
-
-
 class AgendamentoBase(BaseModel):
     enabled: bool = True
     fk_cliente_id: int
@@ -17,7 +16,7 @@ class AgendamentoBase(BaseModel):
     data_confirmacao: Optional[datetime.datetime]
     observacao: Optional[str]
     endereco_atendimento: Optional[str]
-    etapa: str = 'Agendado'
+    etapa: str = "Agendado"
 
 
 class AgendamentoCreate(AgendamentoBase):
@@ -49,7 +48,6 @@ class AgendamentoInDB(AgendamentoInDBBase):
 
 
 # Atendimento
-
 class AtendimentoBase(BaseModel):
     enabled: bool = True
     fk_agendamento_id: int
@@ -91,7 +89,6 @@ class AtendimentoInDB(AtendimentoInDBBase):
 
 
 # Avaliacao
-
 class AvaliacaoBase(BaseModel):
     enabled: bool = True
     fk_atendimento_id: int
